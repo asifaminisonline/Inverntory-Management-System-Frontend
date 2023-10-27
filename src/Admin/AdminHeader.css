@@ -1,0 +1,51 @@
+/* AdminDashboard.css */
+.admin-header {
+    background-color: #007BFF;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  
+  .admin-header h2 {
+    margin: 0;
+    color: white;
+    margin-left: 16px;
+  }
+  
+  .logout-button {
+    background-color: #ff5555;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin-right: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .logout-button:hover {
+    background-color: #ff0000;
+  }
+  
+  .section-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .section-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .section-button:hover {
+    background-color: #0056b3;
+  }
+  
