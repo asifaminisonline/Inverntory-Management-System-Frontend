@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import backendUrl from "./Config";
-import "./Sales.css";
-import AdminDashboard from "./AdminHeader";
+import backendUrl from "../Admin/Config";
+import "./MyOrders.css";
 
-function Sales() {
+function MyOrders() {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
@@ -27,44 +26,43 @@ function Sales() {
       });
   };
 
-  // Calculate the total of all products
-  const calculateTotal = () => {
-    return orders.reduce((total, order) => total + order.price, 0);
+  const handleReturnRequest = (orderId) => {
+    // Implement the logic for making a return request here
+    console.log("Return request for order with ID:", orderId);
   };
 
-  const goBackToDashboard = () => {
-    window.history.back();
-  };
   return (
-    <div>
-      <AdminDashboard />
-      <div className="back-to-dashb">
-        <button onClick={goBackToDashboard}>👈 Go Back To Dashboard</button>
-        <h3 style={{ border: "none" }}>👇 Manage Orders</h3>
-        <p className="total-price">
-          Total Price of All Products: ₹{calculateTotal()}
-        </p>
-      </div>
+    <div className="sales-container">
+      <h1>Order Details</h1>
       <table className="order-table">
         <thead>
           <tr>
             <th>Image</th>
-            <th>Name</th>
+            <th>Customer Name</th>
             <th>Address</th>
             <th>Quantity</th>
             <th>Price</th>
+            <th>Return</th>
           </tr>
         </thead>
         <tbody>
           {orders.map((order) => (
             <tr key={order._id}>
               <td>
-                <img src={order.image} alt="Product" />
+                <img src={order.image} alt="Product" className="order-image" />
               </td>
               <td>{order.name}</td>
               <td>{order.address}</td>
               <td>{order.quantity}</td>
-              <td>{order.price}</td>
+              <td>₹{order.price}</td>
+              <td>
+                <button
+                  onClick={() => handleReturnRequest(order._id)}
+                  className="return-button"
+                >
+                  Return Back
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -73,4 +71,4 @@ function Sales() {
   );
 }
 
-export default Sales;
+export default MyOrders;

@@ -17,6 +17,8 @@
   color: #fff;
   font-size: 24px;
   font-weight: bold;
+  border: 2px solid #FFF;
+  padding: 10px 30px;
 }
 
 .center {

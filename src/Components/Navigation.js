@@ -11,7 +11,7 @@ function Navigation({ selectedCategory, setSelectedCategory }) {
     <nav className="navbar">
       <div className="left">
         <Link to="/" className="logo">
-          Your Logo
+          IMS
         </Link>
       </div>
       <ul className="center">

@@ -67,13 +67,17 @@ function Users() {
     }
   };
 
+  const goBackToDashboard = () => {
+    window.history.back();
+  };
+
   return (
     <>
       <AdminHeader />
       <div className="user-options">
         <div className="option">
           <div className="back-to-dashb">
-            <h3>👈 Go Back To Dashboard</h3>
+            <button onClick={goBackToDashboard}>👈 Go Back To Dashboard</button>
             <h3 style={{ border: "none" }}>👇 Manage Users</h3>
           </div>
           <table className="user-list">

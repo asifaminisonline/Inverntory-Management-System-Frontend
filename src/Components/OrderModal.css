@@ -1,0 +1,76 @@
+/* OrderModal.css */
+.order-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff; /* White background color */
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Box shadow for depth */
+  border-radius: 10px; /* Rounded corners for a card-like look */
+  width: 360px; /* Slightly wider modal */
+  text-align: center;
+  font-family: Arial, sans-serif; /* Font family */
+}
+
+.order-modal h2 {
+  margin-bottom: 20px;
+  color: #007bff; /* Dark text color */
+  font-size: 20px; /* Larger font size */
+}
+
+.order-modal input {
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px; /* Slightly increased font size */
+}
+
+.order-modal button {
+  background-color: #007bff; /* Blue background color */
+  color: #fff; /* White text color */
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px; /* Larger font size */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.order-modal button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* New styles for product details */
+.products-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.products-details img {
+  max-width: 100px; /* Adjust the max width as needed */
+  height: auto;
+}
+
+.products-details h2 {
+  font-size: 18px;
+  color: #333; /* Darker text color */
+}
+
+.products-details p {
+  font-size: 16px;
+  color: #777; /* Light text color */
+}
+
+.quantity-control{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid grey;
+  padding: 30px 0px;
+}
+.quantity-control button {
+  margin: 0px 20px;
+}

@@ -1,0 +1,43 @@
+/* Sales.css */
+
+/* Styles for the table */
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .order-table th {
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .order-table td {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .order-table th:first-child,
+  .order-table td:first-child {
+    border-left: none;
+  }
+  
+  .order-table th:last-child,
+  .order-table td:last-child {
+    border-right: none;
+  }
+  .back-to-dashb{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin:20px;
+  }
+  .back-to-dashb .total-price{
+    background-color: #007bff;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+  }

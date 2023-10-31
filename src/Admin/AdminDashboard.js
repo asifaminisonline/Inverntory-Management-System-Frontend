@@ -25,10 +25,7 @@ function AdminDashboard() {
           <h3>Products</h3>
           <p>Manage the products in your system.</p>
         </div>
-        <div
-          className="admin-card"
-          onClick={() => handleCardClick("/sales-return")}
-        >
+        <div className="admin-card" onClick={() => handleCardClick("/sales")}>
           <h3>Sales & Return</h3>
           <p>Manage sales and return transactions.</p>
         </div>
