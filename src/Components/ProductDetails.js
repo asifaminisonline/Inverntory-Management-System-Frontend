@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom"; // Import Link from react-router-dom
 import "./ProductDetails.css";
 import backendUrl from "../Admin/Config";
-import OrderModal from "./OrderModal"; // Import the OrderModal component
+import OrderModal from "./OrderModal";
 
 const ProductDetails = () => {
   const { productId } = useParams();
@@ -11,7 +11,6 @@ const ProductDetails = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
-    // Fetch product details using the backend URL
     fetch(`${backendUrl}/products/${productId}`, {
       method: "GET",
       headers: {
@@ -53,7 +52,6 @@ const ProductDetails = () => {
       };
 
       fetch(`${backendUrl}/orders`, {
-        // Use the backend URL here
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -72,25 +70,35 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="product-details-container">
-      <h2 className="product-details-title">Product Details</h2>
-      <div className="product-details-content">
-        <img className="product-image" src={product.image} alt={product.name} />
-        <h3 className="product-name">{product.name}</h3>
-        <p className="product-description">{product.description}</p>
-        <p className="product-price">Price: ₹{product.price}</p>
-        <p className="product-category">Category: {product.category}</p>
-        <button className="buy-now" onClick={handleBuyNowClick}>
-          Buy Now
-        </button>
+    <React.Fragment>
+      <div className="product-details-container">
+        <div className="head">
+          <Link to="/" className="back-link">
+            Go Back
+          </Link>
+          <h2 className="product-details-title">Product Details</h2>
+        </div>
+        <div className="product-details-content">
+          <img
+            className="product-image"
+            src={product.image}
+            alt={product.name}
+          />
+          <h3 className="product-name">{product.name}</h3>
+          <p className="product-description">{product.description}</p>
+          <p className="product-price">Price: ₹{product.price}</p>
+          <button className="buy-now" onClick={handleBuyNowClick}>
+            Buy Now
+          </button>
+        </div>
+        <OrderModal
+          isOpen={isModalOpen}
+          onRequestClose={closeModal}
+          onOrderSubmit={handleOrderSubmit}
+          selectedProduct={selectedProduct}
+        />
       </div>
-      <OrderModal
-        isOpen={isModalOpen}
-        onRequestClose={closeModal}
-        onOrderSubmit={handleOrderSubmit}
-        selectedProduct={selectedProduct}
-      />
-    </div>
+    </React.Fragment>
   );
 };
 

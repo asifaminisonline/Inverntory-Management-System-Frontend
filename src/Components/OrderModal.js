@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
+import axios from "axios";
 import "./OrderModal.css";
+
+const backendUrl = "http://localhost:5000"; // Update with your backend URL
 
 function OrderModal({
   isOpen,
@@ -11,7 +14,7 @@ function OrderModal({
   const [formData, setFormData] = useState({
     name: "",
     address: "",
-    quantity: 1, // Initial quantity
+    quantity: 1,
     pinCode: "",
   });
 
@@ -19,19 +22,47 @@ function OrderModal({
     setFormData({
       name: "",
       address: "",
-      quantity: 1, // Reset quantity to 1
+      quantity: 1,
       pinCode: "",
     });
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    onOrderSubmit({
-      ...formData,
-      product: selectedProduct.name, // Include the selected product name
-      totalPrice: selectedProduct.price * formData.quantity, // Calculate total price
-    });
-    clearForm(); // Clear the form data after successful submission
+
+    axios
+      .post(`${backendUrl}/orders`, {
+        productId: selectedProduct._id,
+        name: formData.name,
+        address: formData.address,
+        quantity: formData.quantity,
+        price: selectedProduct.price * formData.quantity,
+        image: selectedProduct.image,
+      })
+      .then((response) => {
+        onOrderSubmit(response.data);
+        sendOrderConfirmationEmail(response.data);
+      })
+      .catch((error) => {
+        console.error("Error placing order:", error);
+      });
+
+    clearForm();
+  };
+
+  const sendOrderConfirmationEmail = (orderData) => {
+    axios
+      .post(`${backendUrl}/send-order-confirmation`, {
+        // Include email content or data needed for the email
+        // You may want to include orderData in the request to customize the email
+        // Example: { email: formData.email, order: orderData }
+      })
+      .then((response) => {
+        console.log("Order confirmation email sent:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error sending order confirmation email:", error);
+      });
   };
 
   const handleQuantityChange = (newQuantity) => {
@@ -41,7 +72,7 @@ function OrderModal({
   };
 
   if (!selectedProduct) {
-    return null; // Return null when selectedProduct is null
+    return null;
   }
 
   return (
